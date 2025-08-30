@@ -1,0 +1,207 @@
+/* Estilos globales con temática de biología */
+:root {
+  /* Paleta de colores inspirada en la naturaleza */
+  --primary-green: #2d5a3d;
+  --secondary-green: #4a7c59;
+  --accent-green: #76b583;
+  --light-green: #a8d8a8;
+  --dark-green: #1a3a26;
+
+  --primary-blue: #2c5f7e;
+  --secondary-blue: #4a8fb8;
+  --accent-blue: #7bb3d3;
+
+  --background: #0f1419;
+  --surface: #1a2332;
+  --text-primary: #e8f4f8;
+  --text-secondary: #a8c8d3;
+
+  --gradient-bio: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+  --gradient-accent: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+
+  /* DNA Chain Variables */
+  --dna-width: 120px;
+  --nucleotide-size: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Contenedor principal con estructura DNA */
+.dna-main {
+  position: relative;
+  margin-left: calc(var(--dna-width) + 2rem);
+  padding-right: 2rem;
+}
+
+/* Efectos de scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animaciones de entrada */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Secciones como nucleótidos */
+.nucleotide-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.nucleotide-section::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--dna-width) - 2rem + var(--dna-width) / 2);
+  top: 50%;
+  width: var(--nucleotide-size);
+  height: var(--nucleotide-size);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+/* Diferentes colores para cada tipo de nucleótido */
+.nucleotide-section.adenine::before {
+  background: radial-gradient(circle, #ff6b6b, #ee5a52);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+}
+
+.nucleotide-section.thymine::before {
+  background: radial-gradient(circle, #4ecdc4, #45b7af);
+  box-shadow: 0 0 20px rgba(78, 205, 196, 0.4);
+}
+
+.nucleotide-section.guanine::before {
+  background: radial-gradient(circle, #45b7d1, #3a9bc1);
+  box-shadow: 0 0 20px rgba(69, 183, 209, 0.4);
+}
+
+.nucleotide-section.cytosine::before {
+  background: radial-gradient(circle, #96ceb4, #7fb8a3);
+  box-shadow: 0 0 20px rgba(150, 206, 180, 0.4);
+}
+
+.nucleotide-section.special::before {
+  background: radial-gradient(circle, var(--accent-green), var(--primary-green));
+  box-shadow: 0 0 20px rgba(118, 181, 131, 0.4);
+}
+
+/* Patrones orgánicos de fondo */
+.bio-pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(77, 181, 131, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(45, 90, 61, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(123, 181, 211, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Efectos de hover con temática orgánica */
+.bio-hover {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.bio-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(45, 90, 61, 0.3);
+}
+
+/* Gradientes de texto */
+.gradient-text {
+  background: var(--gradient-bio);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dna-main {
+    margin-left: calc(var(--dna-width) / 2 + 1rem);
+    padding-right: 1rem;
+  }
+
+  :root {
+    --dna-width: 80px;
+    --nucleotide-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dna-main {
+    margin-left: 65px;
+    /* Justo después de la hélice (60px) + pequeño margen (5px) */
+    padding-right: 0.5rem;
+    /* Reducir padding derecho para más espacio */
+  }
+
+  :root {
+    --dna-width: 60px;
+    --nucleotide-size: 12px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .nucleotide-section::before {
+    display: none;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-bio);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}

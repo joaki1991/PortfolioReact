@@ -1,0 +1,153 @@
+.about {
+    padding: 8rem 0;
+    background: var(--surface);
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.about-content {
+    width: 100%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+.about-text strong {
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: rgba(76, 181, 131, 0.05);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(76, 181, 131, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.skill-card:hover {
+    border-color: rgba(76, 181, 131, 0.3);
+    background: rgba(76, 181, 131, 0.1);
+}
+
+.skill-icon {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.skill-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.skill-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Efectos de partículas orgánicas */
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(45, 90, 61, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(76, 181, 131, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(123, 181, 211, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 968px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 6rem 0;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .skill-card {
+        padding: 1.5rem;
+    }
+
+    .skill-title {
+        font-size: 1rem;
+    }
+
+    .skill-description {
+        font-size: 0.85rem;
+    }
+}

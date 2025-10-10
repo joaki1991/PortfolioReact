@@ -1,0 +1,23 @@
+.bio-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(1px);
+    will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+    .bio-particles {
+        display: none; /* Ocultar en móviles para mejor rendimiento */
+    }
+}

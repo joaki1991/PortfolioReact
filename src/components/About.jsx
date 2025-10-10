@@ -2,7 +2,10 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Code2, Database, Server, Microscope } from 'lucide-react'
+import BioIcon from './BioIcons'
+import ScrollReveal, { ScrollRevealList } from './ScrollReveal'
 import './About.css'
+import './BioIcons.css'
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -15,25 +18,29 @@ const About = () => {
       icon: <Code2 size={32} />,
       title: "Frontend Development",
       description: "React, JavaScript ES6+, HTML5, CSS3, Responsive Design",
-      color: "var(--accent-green)"
+      color: "var(--neon-green)",
+      bioIcon: "testTube"
     },
     {
       icon: <Server size={32} />,
       title: "Backend Development", 
       description: "Node.js, Express.js, RESTful APIs, Authentication",
-      color: "var(--accent-blue)"
+      color: "var(--electric-blue)",
+      bioIcon: "petriDish"
     },
     {
       icon: <Database size={32} />,
       title: "Database Management",
       description: "MongoDB, Mongoose, Data Modeling, Query Optimization",
-      color: "var(--secondary-green)"
+      color: "var(--neon-cyan)",
+      bioIcon: "molecule"
     },
     {
       icon: <Microscope size={32} />,
       title: "Problem Solving",
       description: "Algoritmos, Estructuras de datos, Debugging, Testing",
-      color: "var(--primary-blue)"
+      color: "var(--neon-magenta)",
+      bioIcon: "cell"
     }
   ]
 
@@ -94,17 +101,19 @@ const About = () => {
               </p>
             </motion.div>
 
-            <motion.div className="skills-grid" variants={itemVariants}>
-              {skills.map((skill, index) => (
+            <ScrollRevealList className="skills-grid" staggerDelay={0.15}>
+              {skills.map((skill) => (
                 <motion.div
                   key={skill.title}
                   className="skill-card bio-hover"
-                  variants={itemVariants}
                   whileHover={{ 
                     scale: 1.05,
                     transition: { duration: 0.2 }
                   }}
                 >
+                  <div className="skill-bio-icon">
+                    <BioIcon icon={skill.bioIcon} color={skill.color} size={50} />
+                  </div>
                   <div className="skill-icon" style={{ color: skill.color }}>
                     {skill.icon}
                   </div>
@@ -112,7 +121,7 @@ const About = () => {
                   <p className="skill-description">{skill.description}</p>
                 </motion.div>
               ))}
-            </motion.div>
+            </ScrollRevealList>
           </div>
         </motion.div>
       </div>

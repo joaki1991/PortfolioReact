@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
+import BioIcon from './BioIcons'
 import './Hero.css'
+import './BioIcons.css'
 
 const Hero = () => {
   const containerVariants = {
@@ -96,7 +98,7 @@ const Hero = () => {
             href="https://github.com/joaquin" 
             target="_blank" 
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.2, color: "var(--accent-green)" }}
+            whileHover={{ scale: 1.2, color: "var(--neon-green)" }}
           >
             <Github size={24} />
           </motion.a>
@@ -104,16 +106,22 @@ const Hero = () => {
             href="https://linkedin.com/in/joaquin" 
             target="_blank" 
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.2, color: "var(--accent-blue)" }}
+            whileHover={{ scale: 1.2, color: "var(--electric-blue)" }}
           >
             <Linkedin size={24} />
           </motion.a>
           <motion.a 
             href="mailto:joaquin@email.com"
-            whileHover={{ scale: 1.2, color: "var(--accent-green)" }}
+            whileHover={{ scale: 1.2, color: "var(--neon-magenta)" }}
           >
             <Mail size={24} />
           </motion.a>
+        </motion.div>
+
+        {/* Iconos biotecnológicos */}
+        <motion.div className="hero-bio-icons" variants={itemVariants}>
+          <BioIcon icon="molecule" color="var(--neon-magenta)" size={60} />
+          <BioIcon icon="cell" color="var(--neon-green)" size={60} />
         </motion.div>
       </motion.div>
 

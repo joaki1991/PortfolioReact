@@ -1,23 +1,33 @@
-/* Estilos globales con temática de biología */
+/* Estilos globales con temática de biología - Colores Neón Biotecnológicos */
 :root {
-  /* Paleta de colores inspirada en la naturaleza */
-  --primary-green: #2d5a3d;
-  --secondary-green: #4a7c59;
-  --accent-green: #76b583;
-  --light-green: #a8d8a8;
-  --dark-green: #1a3a26;
+  /* Paleta de colores neón futurista */
+  --neon-green: #00ff41;
+  --neon-blue: #00d9ff;
+  --neon-magenta: #ff00ff;
+  --neon-cyan: #00ffff;
+  --neon-purple: #a445eb;
+  
+  /* Colores de soporte */
+  --primary-green: #00cc33;
+  --secondary-green: #00ff6a;
+  --accent-green: #00ff41;
+  --light-green: #7dff9f;
+  --dark-green: #00661a;
 
-  --primary-blue: #2c5f7e;
-  --secondary-blue: #4a8fb8;
-  --accent-blue: #7bb3d3;
+  --primary-blue: #0099cc;
+  --secondary-blue: #00d9ff;
+  --accent-blue: #00ffff;
+  --electric-blue: #00d9ff;
 
-  --background: #0f1419;
-  --surface: #1a2332;
-  --text-primary: #e8f4f8;
-  --text-secondary: #a8c8d3;
+  --background: #000000;
+  --surface: #0a0a0a;
+  --surface-elevated: #121212;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
 
-  --gradient-bio: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
-  --gradient-accent: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+  --gradient-bio: linear-gradient(135deg, var(--neon-green), var(--electric-blue));
+  --gradient-accent: linear-gradient(135deg, var(--neon-magenta), var(--neon-blue));
+  --gradient-neon: linear-gradient(90deg, var(--neon-green), var(--neon-blue), var(--neon-magenta));
 
   /* DNA Chain Variables */
   --dna-width: 120px;
@@ -114,7 +124,7 @@ html {
   box-shadow: 0 0 20px rgba(118, 181, 131, 0.4);
 }
 
-/* Patrones orgánicos de fondo */
+/* Patrones orgánicos de fondo con efectos neón */
 .bio-pattern {
   position: relative;
   overflow: hidden;
@@ -128,29 +138,99 @@ html {
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(77, 181, 131, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(45, 90, 61, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(123, 181, 211, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 217, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 0, 255, 0.08) 0%, transparent 50%);
   pointer-events: none;
+  animation: bgPulse 15s ease-in-out infinite;
 }
 
-/* Efectos de hover con temática orgánica */
+@keyframes bgPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Efectos de hover con temática orgánica y glow neón */
 .bio-hover {
   transition: all 0.3s ease;
   border-radius: 12px;
+  position: relative;
 }
 
 .bio-hover:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(45, 90, 61, 0.3);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 10px 30px rgba(0, 255, 65, 0.3),
+    0 0 20px rgba(0, 255, 65, 0.2),
+    inset 0 0 20px rgba(0, 255, 65, 0.1);
 }
 
-/* Gradientes de texto */
+.bio-hover::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--neon-green), var(--neon-blue), var(--neon-magenta));
+  border-radius: 14px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  filter: blur(10px);
+}
+
+.bio-hover:hover::after {
+  opacity: 0.3;
+}
+
+/* Gradientes de texto con animación */
 .gradient-text {
-  background: var(--gradient-bio);
+  background: var(--gradient-neon);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradientShift 8s ease infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.5));
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Efectos de glow neón para textos */
+.neon-text {
+  color: var(--neon-green);
+  text-shadow: 
+    0 0 10px var(--neon-green),
+    0 0 20px var(--neon-green),
+    0 0 30px var(--neon-green);
+}
+
+.neon-text-blue {
+  color: var(--electric-blue);
+  text-shadow: 
+    0 0 10px var(--electric-blue),
+    0 0 20px var(--electric-blue),
+    0 0 30px var(--electric-blue);
+}
+
+.neon-text-magenta {
+  color: var(--neon-magenta);
+  text-shadow: 
+    0 0 10px var(--neon-magenta),
+    0 0 20px var(--neon-magenta),
+    0 0 30px var(--neon-magenta);
 }
 
 /* Responsive */

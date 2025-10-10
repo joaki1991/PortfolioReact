@@ -5,6 +5,7 @@ import './DNAChain.css'
 const DNAChain = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     // Detectar si es móvil
@@ -27,6 +28,7 @@ const DNAChain = () => {
       const progress = maxScroll > 0 ? scrolled / maxScroll : 0
       
       setScrollProgress(progress)
+      setScrollY(scrolled)
     }
 
     window.addEventListener('scroll', updateScrollProgress)
@@ -38,9 +40,24 @@ const DNAChain = () => {
     }
   }, [])
 
+  // Calcular rotación 3D basada en el scroll
+  const rotation3D = scrollY * 0.1
+  const parallaxOffset = scrollY * 0.05
+
   return (
-    <div className="dna-chain">
-      <div className="dna-helix-container">
+    <motion.div 
+      className="dna-chain"
+      style={{
+        rotateY: rotation3D,
+        transformStyle: 'preserve-3d'
+      }}
+    >
+      <motion.div 
+        className="dna-helix-container"
+        style={{
+          y: -parallaxOffset
+        }}
+      >
         
         <div className="helix-strand">
           {/* Hélice adaptada para móvil y desktop */}
@@ -62,6 +79,9 @@ const DNAChain = () => {
             const radius = isMobile ? 12 : 25
             const xPos = (isMobile ? 40 : 75) + Math.cos((angle * Math.PI) / 180) * radius
             
+            // Efecto 3D: calcular profundidad basada en el ángulo
+            const zPos = Math.sin((angle * Math.PI) / 180) * 10
+            
             return (
               <motion.div
                 key={`point-${i}`}
@@ -70,24 +90,29 @@ const DNAChain = () => {
                   opacity: 0, 
                   scale: 0,
                   x: xPos,
-                  y: yPos
+                  y: yPos,
+                  z: zPos
                 }}
                 animate={{
                   opacity: shouldShow ? 1 : 0,
-                  scale: shouldShow ? 1 : 0,
+                  scale: shouldShow ? (1 + zPos * 0.02) : 0,
                   x: xPos,
-                  y: yPos
+                  y: yPos,
+                  z: zPos,
+                  rotateY: scrollProgress * 360
                 }}
                 transition={{
                   duration: 0.3,
                   delay: i * 0.02
                 }}
                 style={{
-                  background: `hsl(${120 + i * 4}, 80%, 60%)`,
-                  color: `hsl(${120 + i * 4}, 80%, 60%)`,
+                  background: `hsl(${120 + i * 4}, 100%, ${50 + zPos}%)`,
+                  color: `hsl(${120 + i * 4}, 100%, ${50 + zPos}%)`,
                   position: 'absolute',
                   left: '0px',
-                  top: '0px'
+                  top: '0px',
+                  transformStyle: 'preserve-3d',
+                  boxShadow: `0 0 ${15 + zPos * 2}px currentColor, 0 0 ${8 + zPos}px currentColor inset`
                 }}
               />
             )
@@ -112,6 +137,9 @@ const DNAChain = () => {
             const radius = isMobile ? 12 : 25
             const xPos = (isMobile ? 40 : 75) + Math.cos((angle * Math.PI) / 180) * radius
             
+            // Efecto 3D para la segunda hebra
+            const zPos = Math.sin((angle * Math.PI) / 180) * 10
+            
             return (
               <motion.div
                 key={`point2-${i}`}
@@ -120,24 +148,29 @@ const DNAChain = () => {
                   opacity: 0, 
                   scale: 0,
                   x: xPos,
-                  y: yPos
+                  y: yPos,
+                  z: zPos
                 }}
                 animate={{
                   opacity: shouldShow ? 1 : 0,
-                  scale: shouldShow ? 1 : 0,
+                  scale: shouldShow ? (1 + zPos * 0.02) : 0,
                   x: xPos,
-                  y: yPos
+                  y: yPos,
+                  z: zPos,
+                  rotateY: scrollProgress * 360
                 }}
                 transition={{
                   duration: 0.3,
                   delay: i * 0.02 + 0.05
                 }}
                 style={{
-                  background: `hsl(${200 + i * 4}, 80%, 60%)`,
-                  color: `hsl(${200 + i * 4}, 80%, 60%)`,
+                  background: `hsl(${190 + i * 4}, 100%, ${50 + zPos}%)`,
+                  color: `hsl(${190 + i * 4}, 100%, ${50 + zPos}%)`,
                   position: 'absolute',
                   left: '0px',
-                  top: '0px'
+                  top: '0px',
+                  transformStyle: 'preserve-3d',
+                  boxShadow: `0 0 ${15 + zPos * 2}px currentColor, 0 0 ${8 + zPos}px currentColor inset`
                 }}
               />
             )
@@ -192,7 +225,7 @@ const DNAChain = () => {
             )
           })}
         </div>
-      </div>
+      </motion.div>
 
       {/* Indicador de progreso */}
       <div className="progress-indicator">
@@ -204,7 +237,7 @@ const DNAChain = () => {
           {Math.round(scrollProgress * 100)}%
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

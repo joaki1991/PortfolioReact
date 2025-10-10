@@ -42,6 +42,7 @@
 }
 
 .project-placeholder {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,6 +56,14 @@
     padding: 1.5rem;
     border-radius: 50%;
     backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.project-bio-icon {
+    position: absolute;
+    opacity: 0.4;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .project-status {
@@ -210,6 +219,11 @@
 
     .project-image {
         height: 160px;
+    }
+
+    .project-bio-icon .bio-icon svg {
+        width: 60px;
+        height: 60px;
     }
 
     .project-content {

@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle } from 'lucide-react'
+import BioIcon from './BioIcons'
 import './Contact.css'
+import './BioIcons.css'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -37,6 +39,7 @@ const Contact = () => {
       title: "Email",
       content: "joaquin@email.com",
       link: "mailto:joaquin@email.com",
+      bioIcon: "testTube",
       color: "var(--accent-green)"
     },
     {
@@ -44,6 +47,7 @@ const Contact = () => {
       title: "Teléfono",
       content: "+34 XXX XXX XXX",
       link: "tel:+34XXXXXXXXX",
+      bioIcon: "petriDish",
       color: "var(--accent-blue)"
     },
     {
@@ -51,6 +55,7 @@ const Contact = () => {
       title: "Ubicación",
       content: "España",
       link: null,
+      bioIcon: "molecule",
       color: "var(--secondary-green)"
     }
   ]
@@ -131,7 +136,12 @@ const Contact = () => {
           className="contact-content"
         >
           <motion.div className="section-header" variants={itemVariants}>
-            <h2 className="section-title gradient-text">Contacto</h2>
+            <div className="header-with-bio">
+              <h2 className="section-title gradient-text">Contacto</h2>
+              <div className="header-bio-icons">
+                <BioIcon icon="cell" color="var(--neon-green)" size={50} />
+              </div>
+            </div>
             <p className="section-subtitle">
               ¿Tienes un proyecto en mente? ¡Hablemos!
             </p>
@@ -154,6 +164,9 @@ const Contact = () => {
                   >
                     {info.link ? (
                       <a href={info.link} className="contact-link">
+                        <div className="contact-method-bio-icon">
+                          <BioIcon icon={info.bioIcon} color={info.color} size={35} />
+                        </div>
                         <div className="contact-icon" style={{ color: info.color }}>
                           {info.icon}
                         </div>
@@ -164,6 +177,9 @@ const Contact = () => {
                       </a>
                     ) : (
                       <div className="contact-link">
+                        <div className="contact-method-bio-icon">
+                          <BioIcon icon={info.bioIcon} color={info.color} size={35} />
+                        </div>
                         <div className="contact-icon" style={{ color: info.color }}>
                           {info.icon}
                         </div>

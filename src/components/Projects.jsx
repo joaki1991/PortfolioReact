@@ -2,7 +2,9 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Github, ExternalLink, Zap, Heart, Brain, Lightbulb } from 'lucide-react'
+import BioIcon from './BioIcons'
 import './Projects.css'
+import './BioIcons.css'
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -27,6 +29,7 @@ const Projects = () => {
       demo: "https://pulse-demo.com",
       status: "En desarrollo",
       icon: <Heart size={24} />,
+      bioIcon: "cell",
       color: "var(--accent-green)"
     },
     {
@@ -45,6 +48,7 @@ const Projects = () => {
       demo: "https://joaquin-portfolio.com",
       status: "Completado",
       icon: <Brain size={24} />,
+      bioIcon: "molecule",
       color: "var(--accent-blue)"
     },
     {
@@ -63,6 +67,7 @@ const Projects = () => {
       demo: "https://modern-landing.com",
       status: "Completado",
       icon: <Lightbulb size={24} />,
+      bioIcon: "testTube",
       color: "var(--secondary-green)"
     }
   ]
@@ -116,6 +121,9 @@ const Projects = () => {
                   <div className="project-placeholder">
                     <div className="project-icon" style={{ color: project.color }}>
                       {project.icon}
+                    </div>
+                    <div className="project-bio-icon">
+                      <BioIcon icon={project.bioIcon} color={project.color} size={80} />
                     </div>
                   </div>
                   <div className="project-status">

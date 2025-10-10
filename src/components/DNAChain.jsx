@@ -106,8 +106,8 @@ const DNAChain = () => {
                   delay: i * 0.02
                 }}
                 style={{
-                  background: `hsl(${120 + i * 4}, 100%, ${50 + zPos}%)`,
-                  color: `hsl(${120 + i * 4}, 100%, ${50 + zPos}%)`,
+                  background: i % 2 === 0 ? 'var(--neon-green)' : 'var(--neon-cyan)',
+                  color: i % 2 === 0 ? 'var(--neon-green)' : 'var(--neon-cyan)',
                   position: 'absolute',
                   left: '0px',
                   top: '0px',
@@ -164,8 +164,8 @@ const DNAChain = () => {
                   delay: i * 0.02 + 0.05
                 }}
                 style={{
-                  background: `hsl(${190 + i * 4}, 100%, ${50 + zPos}%)`,
-                  color: `hsl(${190 + i * 4}, 100%, ${50 + zPos}%)`,
+                  background: i % 2 === 0 ? 'var(--neon-magenta)' : 'var(--neon-cyan)',
+                  color: i % 2 === 0 ? 'var(--neon-magenta)' : 'var(--neon-cyan)',
                   position: 'absolute',
                   left: '0px',
                   top: '0px',

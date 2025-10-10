@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Github, ExternalLink, Zap, Heart, Brain, Lightbulb } from 'lucide-react'
 import BioIcon from './BioIcons'
+import Molecule from './Molecule'
 import './Projects.css'
 import './BioIcons.css'
 
@@ -182,6 +183,11 @@ const Projects = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Moléculas decorativas flotantes */}
+          <Molecule size={60} color="var(--neon-green)" delay={0.5} top="15%" left="8%" />
+          <Molecule size={50} color="var(--neon-cyan)" delay={1.5} top="50%" left="85%" />
+          <Molecule size={55} color="var(--neon-magenta)" delay={2.5} top="85%" left="5%" />
         </motion.div>
       </div>
     </section>

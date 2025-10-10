@@ -1,33 +1,33 @@
 /* Estilos globales con temática de biología - Colores Neón Biotecnológicos */
 :root {
-  /* Paleta de colores neón futurista */
-  --neon-green: #00ff41;
-  --neon-blue: #00d9ff;
-  --neon-magenta: #ff00ff;
+  /* Paleta de colores neón futurista - Exacta según especificaciones */
+  --neon-green: #00ffcc;
+  --neon-magenta: #ff00cc;
   --neon-cyan: #00ffff;
+  --neon-blue: #00d9ff;
   --neon-purple: #a445eb;
   
   /* Colores de soporte */
-  --primary-green: #00cc33;
+  --primary-green: #00ffcc;
   --secondary-green: #00ff6a;
-  --accent-green: #00ff41;
+  --accent-green: #00ffcc;
   --light-green: #7dff9f;
   --dark-green: #00661a;
 
-  --primary-blue: #0099cc;
+  --primary-blue: #00ffff;
   --secondary-blue: #00d9ff;
   --accent-blue: #00ffff;
-  --electric-blue: #00d9ff;
+  --electric-blue: #00ffff;
 
-  --background: #000000;
-  --surface: #0a0a0a;
-  --surface-elevated: #121212;
+  --background: #030712;
+  --surface: #0a0f1a;
+  --surface-elevated: #121826;
   --text-primary: #ffffff;
   --text-secondary: #b0b0b0;
 
   --gradient-bio: linear-gradient(135deg, var(--neon-green), var(--electric-blue));
-  --gradient-accent: linear-gradient(135deg, var(--neon-magenta), var(--neon-blue));
-  --gradient-neon: linear-gradient(90deg, var(--neon-green), var(--neon-blue), var(--neon-magenta));
+  --gradient-accent: linear-gradient(135deg, var(--neon-magenta), var(--neon-cyan));
+  --gradient-neon: linear-gradient(90deg, var(--neon-green), var(--neon-cyan), var(--neon-magenta));
 
   /* DNA Chain Variables */
   --dna-width: 120px;
@@ -41,11 +41,12 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   background: var(--background);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  font-weight: 400;
 }
 
 .App {

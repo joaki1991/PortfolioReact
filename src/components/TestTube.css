@@ -1,0 +1,28 @@
+.test-tube-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.test-tube {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.test-tube-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px currentColor;
+}
+
+@media (max-width: 768px) {
+  .test-tube {
+    transform: scale(0.8);
+  }
+  
+  .test-tube-label {
+    font-size: 0.65rem;
+  }
+}

@@ -24,9 +24,10 @@
     position: absolute;
     width: 8px;
     height: 8px;
-    background: radial-gradient(circle, var(--accent-green), transparent);
+    background: radial-gradient(circle, var(--neon-green), transparent);
     border-radius: 50%;
     filter: blur(1px);
+    box-shadow: 0 0 10px var(--neon-green);
 }
 
 .neuron::before {
@@ -36,7 +37,7 @@
     left: 50%;
     width: 40px;
     height: 1px;
-    background: linear-gradient(to right, var(--accent-green), transparent);
+    background: linear-gradient(to right, var(--neon-green), transparent);
     transform: translate(-50%, -50%) rotate(45deg);
     opacity: 0.3;
 }

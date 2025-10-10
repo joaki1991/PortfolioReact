@@ -18,6 +18,7 @@ const Header = () => {
   const menuItems = [
     { href: '#hero', label: 'Inicio' },
     { href: '#about', label: 'Sobre mí' },
+    { href: '#skills', label: 'Habilidades' },
     { href: '#experience', label: 'Experiencia' },
     { href: '#projects', label: 'Proyectos' },
     { href: '#contact', label: 'Contacto' }
@@ -50,7 +51,7 @@ const Header = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, color: "var(--accent-green)" }}
+              whileHover={{ scale: 1.05, color: "var(--neon-green)" }}
             >
               {item.label}
             </motion.a>

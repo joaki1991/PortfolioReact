@@ -60,6 +60,14 @@
     justify-content: center;
 }
 
+.timeline-bio-icon {
+    position: absolute;
+    left: -40px;
+    top: -10px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
 .timeline-content {
     background: rgba(26, 35, 38, 0.8);
     padding: 2rem;
@@ -193,6 +201,16 @@
 
     .timeline-icon {
         padding: 0.25rem;
+    }
+
+    .timeline-bio-icon {
+        left: -30px;
+        top: -5px;
+    }
+
+    .timeline-bio-icon .bio-icon svg {
+        width: 30px;
+        height: 30px;
     }
 
     .timeline-content {

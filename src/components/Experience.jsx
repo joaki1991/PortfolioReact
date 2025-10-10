@@ -2,7 +2,9 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Calendar, MapPin, ExternalLink, Cpu, Database, Globe } from 'lucide-react'
+import BioIcon from './BioIcons'
 import './Experience.css'
+import './BioIcons.css'
 
 const Experience = () => {
   const [ref, inView] = useInView({
@@ -27,6 +29,7 @@ const Experience = () => {
         "Implementación de responsive design y UX moderna"
       ],
       icon: <Cpu size={24} />,
+      bioIcon: "cell",
       color: "var(--accent-green)"
     },
     {
@@ -45,6 +48,7 @@ const Experience = () => {
         "Integración con APIs de terceros"
       ],
       icon: <Globe size={24} />,
+      bioIcon: "testTube",
       color: "var(--accent-blue)"
     },
     {
@@ -63,6 +67,7 @@ const Experience = () => {
         "Mantenimiento al día con últimas tecnologías del ecosistema JavaScript"
       ],
       icon: <Database size={24} />,
+      bioIcon: "molecule",
       color: "var(--secondary-green)"
     }
   ]
@@ -115,6 +120,9 @@ const Experience = () => {
                 <div className="timeline-marker">
                   <div className="timeline-icon" style={{ color: exp.color }}>
                     {exp.icon}
+                  </div>
+                  <div className="timeline-bio-icon">
+                    <BioIcon icon={exp.bioIcon} color={exp.color} size={40} />
                   </div>
                 </div>
 

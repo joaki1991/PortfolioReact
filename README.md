@@ -13,43 +13,84 @@ Un portfolio personal desarrollado en React con una temática única inspirada e
 ## 🚀 Tecnologías Utilizadas
 
 - **Frontend**: React 19+ con Vite
-- **Animaciones**: Framer Motion
+- **Animaciones**: Framer Motion - animaciones basadas en scroll
 - **Iconos**: Lucide React
-- **Estilos**: CSS3 con variables personalizadas
+- **Estilos**: CSS3 con variables personalizadas y efectos neón
+- **Tipografía**: Rajdhani (Google Fonts) - futurista
+- **Detección de Scroll**: React Intersection Observer
 - **Build Tool**: Vite para desarrollo rápido
+- **SVG Animados**: Para hélice de ADN y elementos biológicos
 - **Deployment**: Preparado para deployment estático
 
 ## 🧪 Componentes Principales
 
-### DNAAnimation
-- Animación de doble hélice de ADN en el fondo
-- Partículas flotantes con movimiento orgánico
-- Rotación continua y efectos de opacidad
+### DNAChain
+- Hélice de ADN lateral permanente y animada
+- Se construye progresivamente con el scroll
+- Colores neón alternados (verde #00ffcc y magenta #ff00cc)
+- Efectos 3D con rotación y parallax
+- Versión optimizada para móvil
 
 ### Hero
 - Sección principal con efectos de células animadas
 - Call-to-actions con hover effects
 - Links sociales con micro-animaciones
+- Tipografía futurista Rajdhani
 
 ### About
 - Información personal con iconos científicos
 - Cards de habilidades con efectos hover
 - Diseño modular y escalable
+- Animaciones de entrada suaves
+
+### Skills (Nuevo)
+- Visualización de habilidades con tubos de ensayo animados
+- Burbujas ascendentes en cada tubo
+- Moléculas decorativas flotantes
+- Porcentajes de dominio de tecnologías
+- Efectos glassmorphism
 
 ### Experience
 - Timeline interactivo de experiencia profesional
 - Detalles del proyecto Pulse (MERN stack)
 - Tecnologías y logros destacados
+- Animaciones al scroll
 
 ### Projects
-- Showcase de proyectos con placeholders visuales
+- Showcase de proyectos con glassmorphism
+- Moléculas rotatorias decorativas
 - Tags de tecnologías utilizadas
 - Links a GitHub y demos
+- Efectos neón al hover
 
 ### Contact
 - Formulario funcional de contacto
 - Efectos de red neuronal en el fondo
+- Partículas luminosas con NeonParticleBG
 - Links sociales organizados
+- Efectos glow en iconos
+
+### Componentes de Animación
+
+#### FloatingCell
+- Célula animada que se mueve con el scroll
+- Núcleo pulsante y organelos flotantes
+- Control de posición basado en scrollYProgress
+
+#### Molecule
+- Moléculas con órbitas y electrones
+- Rotación infinita suave
+- Múltiples colores neón
+
+#### TestTube
+- Tubos de ensayo con líquido coloreado
+- Burbujas ascendentes animadas
+- Etiquetas personalizables
+
+#### NeonParticleBG
+- Fondo de partículas bioluminiscentes
+- Líneas de conexión entre partículas
+- Efectos de fade in/out
 
 ## 🛠️ Instalación y Uso
 
@@ -68,15 +109,15 @@ Un portfolio personal desarrollado en React con una temática única inspirada e
    npm run build
    ```
 
-## 🎨 Paleta de Colores
+## 🎨 Paleta de Colores Neón Biotecnológica
 
-El proyecto utiliza una paleta inspirada en la naturaleza:
+El proyecto utiliza colores neón futuristas:
 
-- **Primary Green**: `#2d5a3d` - Verde bosque profundo
-- **Accent Green**: `#76b583` - Verde vibrante para highlights
-- **Primary Blue**: `#2c5f7e` - Azul océano para contrastes
-- **Background**: `#0f1419` - Negro profundo para el fondo
-- **Surface**: `#1a2332` - Gris azulado para superficies
+- **Neon Green**: `#00ffcc` - Verde neón principal
+- **Neon Magenta**: `#ff00cc` - Magenta eléctrico para contrastes
+- **Neon Cyan**: `#00ffff` - Azul cian brillante
+- **Background**: `#030712` - Negro azulado profundo
+- **Surface**: `#0a0f1a` - Superficie elevada oscura
 
 ## 🧬 Características Específicas
 

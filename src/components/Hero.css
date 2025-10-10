@@ -33,11 +33,12 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    border: 2px solid rgba(76, 181, 131, 0.3);
+    border: 2px solid rgba(0, 255, 65, 0.3);
     border-radius: 50%;
     background: radial-gradient(circle,
-            rgba(76, 181, 131, 0.1) 0%,
+            rgba(0, 255, 65, 0.15) 0%,
             transparent 70%);
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
 }
 
 .cell::before {
@@ -47,9 +48,10 @@
     left: 50%;
     width: 20px;
     height: 20px;
-    background: rgba(76, 181, 131, 0.4);
+    background: rgba(0, 255, 65, 0.6);
     border-radius: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
 }
 
 .hero-content {
@@ -62,10 +64,11 @@
 
 .hero-intro {
     font-size: 1.2rem;
-    color: var(--accent-green);
+    color: var(--neon-green);
     margin-bottom: 1.5rem;
     /* Más espacio debajo del "Hola soy" */
     font-weight: 500;
+    text-shadow: 0 0 10px var(--neon-green);
 }
 
 .greeting {
@@ -108,8 +111,9 @@
 }
 
 .hero-description strong {
-    color: var(--accent-green);
+    color: var(--neon-green);
     font-weight: 600;
+    text-shadow: 0 0 10px var(--neon-green);
 }
 
 .hero-cta {
@@ -136,22 +140,27 @@
     background: var(--gradient-bio);
     color: white;
     border: none;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
 }
 
 .cta-secondary {
     background: transparent;
-    color: var(--accent-green);
-    border: 2px solid var(--accent-green);
+    color: var(--neon-green);
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
 }
 
 .cta-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(76, 181, 131, 0.4);
+    box-shadow: 
+        0 10px 30px rgba(0, 255, 65, 0.5),
+        0 0 40px rgba(0, 255, 65, 0.3);
 }
 
 .cta-secondary:hover {
-    background: var(--accent-green);
-    color: white;
+    background: var(--neon-green);
+    color: black;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
 }
 
 .hero-social {
@@ -166,12 +175,28 @@
     transition: all 0.3s ease;
     padding: 0.5rem;
     border-radius: 50%;
-    background: rgba(76, 181, 131, 0.1);
+    background: rgba(0, 255, 65, 0.1);
 }
 
 .hero-social a:hover {
-    background: rgba(76, 181, 131, 0.2);
+    background: rgba(0, 255, 65, 0.2);
     transform: translateY(-2px);
+    box-shadow: 0 0 20px currentColor;
+}
+
+.hero-bio-icons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .hero-bio-icons {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
 }
 
 .scroll-indicator {
@@ -179,8 +204,9 @@
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--accent-green);
+    color: var(--neon-green);
     cursor: pointer;
+    filter: drop-shadow(0 0 10px var(--neon-green));
 }
 
 /* Mobile Styles */

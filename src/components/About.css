@@ -2,12 +2,9 @@
     padding: 8rem 0;
     background: var(--surface);
     position: relative;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    box-sizing: border-box;
 }
 
 .about-content {
@@ -34,9 +31,95 @@
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 280px 1fr 1fr;
+    gap: 3rem;
     align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.about-profile {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: sticky;
+    top: 100px;
+}
+
+.profile-photo-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Anillos con ondas animadas */
+.neon-ring-wave,
+.neon-ring-wave-2 {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid;
+    animation: neonWaveRipple 3s ease-out infinite, neonBorderRotate 12s ease-in-out infinite;
+}
+
+.neon-ring-wave {
+    width: 260px;
+    height: 260px;
+    border-color: var(--neon-cyan);
+    box-shadow:
+        0 0 20px var(--neon-cyan),
+        inset 0 0 20px var(--neon-cyan);
+    animation-delay: 0s, 0s;
+}
+
+.neon-ring-wave-2 {
+    width: 280px;
+    height: 280px;
+    border-color: var(--neon-magenta);
+    box-shadow:
+        0 0 25px var(--neon-magenta),
+        inset 0 0 25px var(--neon-magenta);
+    animation-delay: 1.5s, 2s;
+    /* Desfase para efecto de onda */
+}
+
+/* Animación de ondas expansivas */
+@keyframes neonWaveRipple {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        border-width: 3px;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 0.8;
+        border-width: 2px;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        border-width: 3px;
+    }
+}
+
+.profile-photo {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--neon-cyan);
+    box-shadow:
+        0 0 30px var(--neon-cyan),
+        0 0 60px rgba(0, 255, 255, 0.5),
+        inset 0 0 30px rgba(0, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+    filter: brightness(1.1) contrast(1.1);
+    animation: neonBorderRotate 10s ease-in-out infinite;
 }
 
 .about-text {
@@ -50,8 +133,10 @@
 }
 
 .about-text strong {
-    color: var(--accent-green);
+    color: var(--neon-cyan);
     font-weight: 600;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    animation: neonColorRotate 8s ease-in-out infinite;
 }
 
 .skills-grid {
@@ -61,18 +146,21 @@
 }
 
 .skill-card {
-    background: rgba(76, 181, 131, 0.05);
+    background: rgba(0, 255, 255, 0.03);
     padding: 2rem;
     border-radius: 20px;
-    border: 1px solid rgba(76, 181, 131, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.2);
     text-align: center;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
 }
 
 .skill-card:hover {
-    border-color: rgba(76, 181, 131, 0.3);
-    background: rgba(76, 181, 131, 0.1);
+    border-color: var(--neon-cyan);
+    background: rgba(0, 255, 255, 0.08);
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.3),
+        inset 0 0 20px rgba(0, 255, 255, 0.05);
 }
 
 .skill-icon {
@@ -94,7 +182,7 @@
     line-height: 1.5;
 }
 
-/* Efectos de partículas orgánicas */
+/* Efectos de partículas orgánicas con neón */
 .about::before {
     content: '';
     position: absolute;
@@ -103,10 +191,11 @@
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(45, 90, 61, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(76, 181, 131, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(123, 181, 211, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.05) 0%, transparent 50%);
     pointer-events: none;
+    animation: neonPulse 8s ease-in-out infinite;
 }
 
 /* Mobile Styles */
@@ -116,6 +205,31 @@
         gap: 3rem;
     }
 
+    .about-profile {
+        position: relative;
+        top: 0;
+    }
+
+    .profile-photo-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-photo {
+        width: 190px;
+        height: 190px;
+    }
+
+    .neon-ring-wave {
+        width: 210px;
+        height: 210px;
+    }
+
+    .neon-ring-wave-2 {
+        width: 230px;
+        height: 230px;
+    }
+
     .skills-grid {
         grid-template-columns: 1fr;
     }
@@ -123,11 +237,9 @@
 
 @media (max-width: 768px) {
     .about {
-        padding: 6rem 0;
-    }
-
-    .container {
-        padding: 0 1rem;
+        padding: 6rem 1.5rem;
+        margin-left: 0;
+        width: 100%;
     }
 
     .section-header {

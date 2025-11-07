@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Code2, Database, Server, Microscope } from 'lucide-react'
+import profilePhoto from '../assets/profile_photo.png'
 import './About.css'
 
 const About = () => {
@@ -75,6 +76,22 @@ const About = () => {
           </motion.div>
 
           <div className="about-grid">
+            <motion.div className="about-profile" variants={itemVariants}>
+              <motion.div 
+                className="profile-photo-container"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="neon-ring-wave"></div>
+                <div className="neon-ring-wave-2"></div>
+                <img 
+                  src={profilePhoto} 
+                  alt="Joaquín - Desarrollador Full Stack" 
+                  className="profile-photo"
+                />
+              </motion.div>
+            </motion.div>
+
             <motion.div className="about-text" variants={itemVariants}>
               <p>
                 Soy un desarrollador full stack con experiencia en tecnologías modernas 
@@ -95,7 +112,7 @@ const About = () => {
             </motion.div>
 
             <motion.div className="skills-grid" variants={itemVariants}>
-              {skills.map((skill, index) => (
+              {skills.map((skill) => (
                 <motion.div
                   key={skill.title}
                   className="skill-card bio-hover"

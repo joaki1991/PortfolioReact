@@ -1,0 +1,135 @@
+/* Contenedor del DNA 3D */
+.dna3d-container {
+    position: fixed;
+    z-index: 999;
+    pointer-events: none;
+    backdrop-filter: blur(15px);
+    background: transparent;
+    box-shadow:
+        0 0 50px rgba(0, 255, 255, 0.15),
+        0 0 30px rgba(255, 0, 255, 0.1),
+        inset 0 0 30px rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    overflow: hidden;
+}
+
+/* Desktop - DNA Vertical en barra lateral izquierda */
+@media (min-width: 1025px) {
+    .dna3d-container {
+        top: 0;
+        left: 0;
+        width: 120px;
+        height: 100vh;
+        border-radius: 0 30px 30px 0;
+    }
+
+    .dna3d-container::before {
+        border-radius: 0 32px 32px 0;
+    }
+}
+
+/* Tablet - DNA Horizontal inferior */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .dna3d-container {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        width: calc(100vw - 20px);
+        height: 100px;
+        border-radius: 30px;
+    }
+
+    .dna3d-container::before {
+        border-radius: 32px;
+    }
+}
+
+/* Borde brillante animado */
+.dna3d-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(180deg,
+            var(--neon-cyan),
+            var(--neon-magenta),
+            var(--neon-cyan));
+    filter: blur(10px);
+    opacity: 0.3;
+    z-index: -1;
+    animation: neonBorderRotate 15s ease-in-out infinite;
+}
+
+@media (max-width: 1024px) {
+    .dna3d-container::before {
+        background: linear-gradient(90deg,
+                var(--neon-cyan),
+                var(--neon-magenta),
+                var(--neon-cyan));
+    }
+}
+
+/* Canvas de Three.js */
+.dna3d-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+/* Animación del borde neon */
+@keyframes neonBorderRotate {
+
+    0%,
+    100% {
+        background: linear-gradient(180deg,
+                var(--neon-cyan),
+                var(--neon-magenta),
+                var(--neon-cyan));
+    }
+
+    50% {
+        background: linear-gradient(180deg,
+                var(--neon-magenta),
+                var(--neon-cyan),
+                var(--neon-magenta));
+    }
+}
+
+@media (max-width: 1024px) {
+    @keyframes neonBorderRotate {
+
+        0%,
+        100% {
+            background: linear-gradient(90deg,
+                    var(--neon-cyan),
+                    var(--neon-magenta),
+                    var(--neon-cyan));
+        }
+
+        50% {
+            background: linear-gradient(90deg,
+                    var(--neon-magenta),
+                    var(--neon-cyan),
+                    var(--neon-magenta));
+        }
+    }
+}
+
+/* Mobile - DNA Horizontal */
+@media (max-width: 768px) {
+    .dna3d-container {
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        width: calc(100vw - 16px);
+        height: 100px;
+        border-radius: 20px;
+    }
+
+    .dna3d-container::before {
+        border-radius: 22px;
+        filter: blur(8px);
+    }
+}

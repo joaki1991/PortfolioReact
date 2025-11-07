@@ -1,33 +1,141 @@
-/* Estilos globales con temática de biología */
+/* Estilos globales con temática de biología y colores neón */
 :root {
-  /* Paleta de colores inspirada en la naturaleza */
-  --primary-green: #2d5a3d;
-  --secondary-green: #4a7c59;
-  --accent-green: #76b583;
-  --light-green: #a8d8a8;
-  --dark-green: #1a3a26;
+  /* Paleta de colores NEÓN vibrantes */
+  --neon-cyan: #00ffff;
+  --neon-magenta: #ff00ff;
+  --neon-green: #00ff41;
+  --neon-pink: #ff0080;
+  --neon-purple: #bf00ff;
+  --neon-blue: #0080ff;
+  --neon-yellow: #ffff00;
 
-  --primary-blue: #2c5f7e;
-  --secondary-blue: #4a8fb8;
-  --accent-blue: #7bb3d3;
+  /* Colores base actualizados con tono neón */
+  --primary-green: #00ff41;
+  --secondary-green: #00cc33;
+  --accent-green: #39ff14;
+  --light-green: #7fff00;
+  --dark-green: #00661a;
 
-  --background: #0f1419;
-  --surface: #1a2332;
-  --text-primary: #e8f4f8;
-  --text-secondary: #a8c8d3;
+  --primary-blue: #00d9ff;
+  --secondary-blue: #0080ff;
+  --accent-blue: #00ffff;
 
-  --gradient-bio: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
-  --gradient-accent: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+  --background: #0a0a0f;
+  --surface: #141420;
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8ff;
+
+  --gradient-bio: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+  --gradient-accent: linear-gradient(135deg, var(--neon-green), var(--neon-pink));
+  --gradient-neon: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-yellow));
 
   /* DNA Chain Variables */
   --dna-width: 120px;
   --nucleotide-size: 20px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Animaciones de rotación de colores neón */
+@keyframes neonColorRotate {
+  0% {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0, 255, 255, 0.5);
+  }
+
+  20% {
+    color: var(--neon-magenta);
+    text-shadow: 0 0 20px var(--neon-magenta), 0 0 40px rgba(255, 0, 255, 0.5);
+  }
+
+  40% {
+    color: var(--neon-green);
+    text-shadow: 0 0 20px var(--neon-green), 0 0 40px rgba(0, 255, 65, 0.5);
+  }
+
+  60% {
+    color: var(--neon-pink);
+    text-shadow: 0 0 20px var(--neon-pink), 0 0 40px rgba(255, 0, 128, 0.5);
+  }
+
+  80% {
+    color: var(--neon-purple);
+    text-shadow: 0 0 20px var(--neon-purple), 0 0 40px rgba(191, 0, 255, 0.5);
+  }
+
+  100% {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0, 255, 255, 0.5);
+  }
+}
+
+@keyframes neonBorderRotate {
+  0% {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  }
+
+  20% {
+    border-color: var(--neon-magenta);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+  }
+
+  40% {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+  }
+
+  60% {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);
+  }
+
+  80% {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 20px rgba(191, 0, 255, 0.3);
+  }
+
+  100% {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  }
+}
+
+@keyframes neonGlowRotate {
+  0% {
+    box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0, 255, 255, 0.3);
+  }
+
+  20% {
+    box-shadow: 0 0 20px var(--neon-magenta), 0 0 40px rgba(255, 0, 255, 0.3);
+  }
+
+  40% {
+    box-shadow: 0 0 20px var(--neon-green), 0 0 40px rgba(0, 255, 65, 0.3);
+  }
+
+  60% {
+    box-shadow: 0 0 20px var(--neon-pink), 0 0 40px rgba(255, 0, 128, 0.3);
+  }
+
+  80% {
+    box-shadow: 0 0 20px var(--neon-purple), 0 0 40px rgba(191, 0, 255, 0.3);
+  }
+
+  100% {
+    box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0, 255, 255, 0.3);
+  }
+}
+
+/* Clase para aplicar la animación de color */
+.neon-rotate {
+  animation: neonColorRotate 10s ease-in-out infinite;
+}
+
+.neon-border-rotate {
+  animation: neonBorderRotate 10s ease-in-out infinite;
+}
+
+.neon-glow-rotate {
+  animation: neonGlowRotate 10s ease-in-out infinite;
 }
 
 body {
@@ -36,18 +144,61 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .App {
   position: relative;
   min-height: 100vh;
+  width: 100%;
 }
 
-/* Contenedor principal con estructura DNA */
-.dna-main {
+/* Contenedor principal */
+.main-content {
   position: relative;
-  margin-left: calc(var(--dna-width) + 2rem);
-  padding-right: 2rem;
+  width: 100%;
+  overflow-x: hidden;
+  transition: margin-left 0.3s ease;
+}
+
+/* Desktop - Dejar espacio para la barra lateral del DNA */
+@media (min-width: 1025px) {
+  .main-content {
+    margin-left: 120px;
+    width: calc(100% - 120px);
+  }
+}
+
+/* Container centrado global - ocupa toda la página */
+.container {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: max(2rem, calc((100vw - 1600px) / 2 + 2rem));
+  padding-right: max(2rem, calc((100vw - 1600px) / 2 + 2rem));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Alternativa simple */
+@supports not (padding: max(2rem, 5vw)) {
+  .container {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
 }
 
 /* Efectos de scroll suave */
@@ -76,45 +227,46 @@ html {
   padding: 4rem 0;
 }
 
+/* Marcadores de nucleótidos - ahora decorativos en el layout */
 .nucleotide-section::before {
   content: '';
   position: absolute;
-  left: calc(-1 * var(--dna-width) - 2rem + var(--dna-width) / 2);
-  top: 50%;
+  left: 2rem;
+  top: 4rem;
   width: var(--nucleotide-size);
   height: var(--nucleotide-size);
   border-radius: 50%;
-  transform: translateY(-50%);
   z-index: 10;
+  opacity: 0.6;
 }
 
-/* Diferentes colores para cada tipo de nucleótido */
+/* Diferentes colores NEÓN para cada tipo de nucleótido */
 .nucleotide-section.adenine::before {
-  background: radial-gradient(circle, #ff6b6b, #ee5a52);
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+  background: radial-gradient(circle, var(--neon-cyan), var(--neon-blue));
+  box-shadow: 0 0 30px var(--neon-cyan), 0 0 60px rgba(0, 255, 255, 0.3);
 }
 
 .nucleotide-section.thymine::before {
-  background: radial-gradient(circle, #4ecdc4, #45b7af);
-  box-shadow: 0 0 20px rgba(78, 205, 196, 0.4);
+  background: radial-gradient(circle, var(--neon-green), var(--accent-green));
+  box-shadow: 0 0 30px var(--neon-green), 0 0 60px rgba(0, 255, 65, 0.3);
 }
 
 .nucleotide-section.guanine::before {
-  background: radial-gradient(circle, #45b7d1, #3a9bc1);
-  box-shadow: 0 0 20px rgba(69, 183, 209, 0.4);
+  background: radial-gradient(circle, var(--neon-magenta), var(--neon-pink));
+  box-shadow: 0 0 30px var(--neon-magenta), 0 0 60px rgba(255, 0, 255, 0.3);
 }
 
 .nucleotide-section.cytosine::before {
-  background: radial-gradient(circle, #96ceb4, #7fb8a3);
-  box-shadow: 0 0 20px rgba(150, 206, 180, 0.4);
+  background: radial-gradient(circle, var(--neon-purple), var(--neon-blue));
+  box-shadow: 0 0 30px var(--neon-purple), 0 0 60px rgba(191, 0, 255, 0.3);
 }
 
 .nucleotide-section.special::before {
-  background: radial-gradient(circle, var(--accent-green), var(--primary-green));
-  box-shadow: 0 0 20px rgba(118, 181, 131, 0.4);
+  background: radial-gradient(circle, var(--neon-yellow), var(--neon-green));
+  box-shadow: 0 0 30px var(--neon-yellow), 0 0 60px rgba(255, 255, 0, 0.3);
 }
 
-/* Patrones orgánicos de fondo */
+/* Patrones orgánicos de fondo con efectos neón */
 .bio-pattern {
   position: relative;
   overflow: hidden;
@@ -128,21 +280,39 @@ html {
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(77, 181, 131, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(45, 90, 61, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(123, 181, 211, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(0, 255, 65, 0.08) 0%, transparent 50%);
   pointer-events: none;
+  animation: neonPulse 8s ease-in-out infinite;
 }
 
-/* Efectos de hover con temática orgánica */
+@keyframes neonPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Efectos de hover con temática orgánica y brillo neón */
 .bio-hover {
   transition: all 0.3s ease;
   border-radius: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
 }
 
 .bio-hover:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(45, 90, 61, 0.3);
+  box-shadow:
+    0 10px 30px rgba(0, 255, 255, 0.3),
+    0 0 40px rgba(0, 255, 255, 0.2),
+    inset 0 0 20px rgba(0, 255, 255, 0.05);
+  border-color: var(--neon-cyan);
 }
 
 /* Gradientes de texto */
@@ -155,28 +325,24 @@ html {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .dna-main {
-    margin-left: calc(var(--dna-width) / 2 + 1rem);
-    padding-right: 1rem;
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   :root {
-    --dna-width: 80px;
     --nucleotide-size: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .dna-main {
-    margin-left: 65px;
-    /* Justo después de la hélice (60px) + pequeño margen (5px) */
-    padding-right: 0.5rem;
-    /* Reducir padding derecho para más espacio */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   :root {
-    --dna-width: 60px;
-    --nucleotide-size: 12px;
+    --nucleotide-size: 10px;
   }
 
   body {
@@ -184,24 +350,38 @@ html {
   }
 
   .nucleotide-section::before {
-    display: none;
+    width: 12px;
+    height: 12px;
+    left: 1rem;
+    top: 2rem;
   }
 }
 
-/* Scrollbar personalizada */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Scrollbar personalizada con efecto neón */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--surface);
+  border-left: 1px solid rgba(0, 255, 255, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--gradient-bio);
   border-radius: 4px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-green);
+  background: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
 }

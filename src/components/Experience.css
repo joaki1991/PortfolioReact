@@ -2,6 +2,9 @@
     padding: 8rem 0;
     background: var(--background);
     position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    box-sizing: border-box;
 }
 
 .experience-content {
@@ -10,7 +13,7 @@
 
 .timeline {
     position: relative;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -49,6 +52,19 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
+    animation: neonBorderRotate 10s ease-in-out infinite;
+}
+
+.timeline-item:nth-child(2) .timeline-marker {
+    animation-delay: 2s;
+}
+
+.timeline-item:nth-child(3) .timeline-marker {
+    animation-delay: 4s;
+}
+
+.timeline-item:nth-child(4) .timeline-marker {
+    animation-delay: 6s;
 }
 
 .timeline-icon {
@@ -64,13 +80,13 @@
     background: rgba(26, 35, 38, 0.8);
     padding: 2rem;
     border-radius: 20px;
-    border: 1px solid rgba(76, 181, 131, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
 .timeline-content:hover {
-    border-color: rgba(76, 181, 131, 0.3);
+    border-color: rgba(0, 255, 255, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
@@ -128,13 +144,13 @@
 }
 
 .tech-tag {
-    background: rgba(76, 181, 131, 0.1);
+    background: rgba(0, 255, 255, 0.1);
     color: var(--accent-green);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
-    border: 1px solid rgba(76, 181, 131, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.2);
 }
 
 .achievements {
@@ -173,7 +189,9 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
     .experience {
-        padding: 6rem 0;
+        padding: 6rem 1.5rem;
+        margin-left: 0;
+        width: 100%;
     }
 
     .timeline::before {

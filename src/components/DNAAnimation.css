@@ -1,103 +1,114 @@
+/* Contenedor principal del DNA */
 .dna-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    width: calc(100vw - 20px);
+    height: 120px;
+    margin: 0;
+    padding: 0;
     pointer-events: none;
+    z-index: 999;
+    overflow: visible;
+    background: transparent;
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.15), 0 0 30px rgba(255, 0, 255, 0.1), inset 0 0 30px rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.dna-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-cyan));
+    border-radius: 32px;
+    filter: blur(10px);
+    opacity: 0.3;
     z-index: -1;
-    overflow: hidden;
+    animation: neonBorderRotate 15s ease-in-out infinite;
 }
 
 .dna-helix {
     position: absolute;
+    transform-style: preserve-3d;
+}
+
+.dna-helix.vertical {
+    left: 50%;
+    top: 10px;
+    bottom: 10px;
+    width: 120px;
+    height: calc(100% - 20px);
+    transform: translateX(-50%);
+}
+
+.dna-helix.horizontal {
     top: 50%;
-    right: -50px;
-    width: 100px;
-    height: 400px;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    height: 100px;
     transform: translateY(-50%);
 }
 
-.dna-pair {
+.dna-segment {
     position: absolute;
-    width: 80px;
-    height: 8px;
-    left: 50%;
-    transform-origin: center;
-    margin-left: -40px;
+    width: 100%;
+    height: 1px;
+    transform-style: preserve-3d;
 }
 
 .dna-base {
     position: absolute;
     width: 12px;
-    height: 8px;
-    border-radius: 6px;
-    background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
-    box-shadow: 0 2px 8px rgba(76, 181, 131, 0.4);
+    height: 12px;
+    border-radius: 50%;
+    transform-style: preserve-3d;
 }
 
-.dna-base-left {
-    left: 0;
+.dna-base.strand1 {
+    background: radial-gradient(circle, var(--neon-cyan), var(--neon-blue));
+    box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0, 255, 255, 0.6), inset 0 0 10px var(--neon-cyan);
+    left: 50%;
+    transform-origin: center;
 }
 
-.dna-base-right {
-    right: 0;
+.dna-base.strand2 {
+    background: radial-gradient(circle, var(--neon-magenta), var(--neon-pink));
+    box-shadow: 0 0 20px var(--neon-magenta), 0 0 40px rgba(255, 0, 255, 0.6), inset 0 0 10px var(--neon-magenta);
+    left: 50%;
+    transform-origin: center;
 }
 
 .dna-connection {
     position: absolute;
-    top: 50%;
-    left: 12px;
-    right: 12px;
-    height: 2px;
-    background: linear-gradient(to right,
-            var(--accent-green),
-            transparent 20%,
-            transparent 80%,
-            var(--accent-blue));
-    transform: translateY(-50%);
+    background: linear-gradient(90deg, var(--neon-cyan), rgba(0, 255, 255, 0.3), var(--neon-magenta));
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
-.floating-particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, var(--accent-green), transparent);
-    border-radius: 50%;
-    filter: blur(0.5px);
-}
-
-/* Variaciones de partículas */
-.floating-particle:nth-child(even) {
-    background: radial-gradient(circle, var(--accent-blue), transparent);
-}
-
-.floating-particle:nth-child(3n) {
-    background: radial-gradient(circle, var(--light-green), transparent);
-    width: 6px;
-    height: 6px;
-}
-
-/* Efectos para dispositivos móviles */
 @media (max-width: 768px) {
-    .dna-helix {
-        right: -30px;
-        width: 60px;
-        height: 300px;
+    .dna-container {
+        height: 90px;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        width: calc(100vw - 16px);
+        border-radius: 20px;
     }
 
-    .dna-pair {
-        width: 50px;
-        margin-left: -25px;
+    .dna-helix.horizontal {
+        height: 70px;
     }
 
     .dna-base {
-        width: 8px;
-        height: 6px;
-    }
-
-    .dna-connection {
-        left: 8px;
-        right: 8px;
+        width: 10px;
+        height: 10px;
     }
 }

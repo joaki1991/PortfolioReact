@@ -1,68 +1,130 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import './DNAAnimation.css'
 
 const DNAAnimation = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Configuración de la hélice
+  const segments = isMobile ? 40 : 30 // Más segmentos en móvil para cubrir más ancho
+  const radius = 40 // Radio de la hélice
+  const helixLength = isMobile ? 100 : 80 // Longitud en porcentaje
+  
   return (
     <div className="dna-container">
-      <motion.div 
-        className="dna-helix"
-        animate={{ rotate: 360 }}
-        transition={{ 
-          duration: 20, 
-          repeat: Infinity, 
-          ease: "linear" 
-        }}
-      >
-        {/* Doble hélice de ADN */}
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="dna-pair"
-            style={{ 
-              transform: `translateY(${i * 30}px) rotateZ(${i * 30}deg)` 
-            }}
-            animate={{ 
-              rotateZ: [i * 30, i * 30 + 360],
-              opacity: [0.3, 1, 0.3]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              delay: i * 0.2,
-              ease: "easeInOut"
-            }}
-          >
-            <div className="dna-base dna-base-left"></div>
-            <div className="dna-connection"></div>
-            <div className="dna-base dna-base-right"></div>
-          </motion.div>
-        ))}
-      </motion.div>
+      <div className={`dna-helix ${isMobile ? 'horizontal' : 'vertical'}`}>
+        {[...Array(segments)].map((_, i) => {
+          const progress = i / segments
+          const angle = progress * Math.PI * 8 // 8 vueltas completas
+          
+          // Calcular posiciones para la doble hélice
+          const strand1 = {
+            x: Math.sin(angle) * radius,
+            y: isMobile ? progress * helixLength : progress * helixLength,
+            z: Math.cos(angle) * radius
+          }
+          
+          const strand2 = {
+            x: Math.sin(angle + Math.PI) * radius,
+            y: isMobile ? progress * helixLength : progress * helixLength,
+            z: Math.cos(angle + Math.PI) * radius
+          }
+          
+          // Determinar si la base debe estar visible (conexión horizontal)
+          const showConnection = Math.abs(Math.sin(angle)) < 0.3
+          
+          return (
+            <div key={i} className="dna-segment" style={{
+              [isMobile ? 'left' : 'top']: `${progress * helixLength}%`
+            }}>
+              {/* Hebra 1 - Cyan */}
+              <motion.div
+                className="dna-base strand1"
+                style={{
+                  transform: isMobile 
+                    ? `translateY(${strand1.x}px) translateZ(${strand1.z}px)`
+                    : `translateX(${strand1.x}px) translateZ(${strand1.z}px)`
+                }}
+                animate={{
+                  opacity: [0.6, 1, 0.6],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.05,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              {/* Hebra 2 - Magenta */}
+              <motion.div
+                className="dna-base strand2"
+                style={{
+                  transform: isMobile
+                    ? `translateY(${strand2.x}px) translateZ(${strand2.z}px)`
+                    : `translateX(${strand2.x}px) translateZ(${strand2.z}px)`
+                }}
+                animate={{
+                  opacity: [0.6, 1, 0.6],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.05,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              {/* Conexión horizontal entre hebras */}
+              {showConnection && (
+                <motion.div
+                  className="dna-connection"
+                  style={{
+                    width: isMobile ? '2px' : `${radius * 2}px`,
+                    height: isMobile ? `${radius * 2}px` : '2px',
+                    [isMobile ? 'left' : 'top']: '50%',
+                    transform: isMobile 
+                      ? `translateX(-50%) translateY(${strand1.x}px) rotateZ(90deg)`
+                      : `translateY(-50%) translateX(${strand1.x}px)`
+                  }}
+                  animate={{
+                    opacity: [0.3, 0.8, 0.3],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: i * 0.05,
+                    ease: "easeInOut"
+                  }}
+                />
+              )}
+            </div>
+          )
+        })}
+      </div>
       
-      {/* Partículas flotantes */}
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={`particle-${i}`}
-          className="floating-particle"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, Math.random() * 20 - 10, 0],
-            opacity: [0, 1, 0],
-            scale: [0.5, 1, 0.5]
-          }}
-          transition={{
-            duration: 3 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
+      {/* Animación de rotación de la hélice completa */}
+      <motion.div 
+        className="dna-rotation-effect"
+        animate={{
+          rotateY: isMobile ? [0, 0] : [0, 360],
+          rotateX: isMobile ? [0, 360] : [0, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
     </div>
   )
 }

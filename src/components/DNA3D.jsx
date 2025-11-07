@@ -64,7 +64,7 @@ function DNAHelix({ scrollProgress, isDesktop }) {
       if (isDesktop) {
         groupRef.current.scale.set(0.3, 0.3, 0.3)
       } else {
-        groupRef.current.scale.set(1, 1, 1)
+        groupRef.current.scale.set(1.3, 1.3, 1.3) // Escala aumentada en móvil/tablet
       }
       
       if (isDesktop) {

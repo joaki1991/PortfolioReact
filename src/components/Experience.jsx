@@ -12,55 +12,58 @@ const Experience = () => {
 
   const experiences = [
     {
+      title: "Desarrollador Full Stack - Sistema GPS Tracking",
+      company: "NGPRO",
+      period: "2024 - Presente",
+      location: "España",
+      type: "trabajo",
+      description: "Desarrollo y optimización de sistemas de tracking GPS basados en Traccar (open-source) para posicionamiento en tiempo real de vehículos, conductores y aperos agrícolas.",
+      technologies: ["Java", "Spring Boot", "Traccar", "PostgreSQL", "React", "WebSockets", "GPS", "REST APIs", "Docker"],
+      achievements: [
+        "Adaptación y mejora del sistema Traccar open-source para necesidades específicas del sector agrícola",
+        "Implementación de funcionalidades de tracking en tiempo real con WebSockets",
+        "Desarrollo de algoritmos de optimización para posicionamiento GPS de múltiples dispositivos",
+        "Diseño de arquitectura escalable con Spring Boot y PostgreSQL",
+        "Integración de telemetría de vehículos y gestión de conductores",
+        "Mejoras en la interfaz web con React para visualización de datos geoespaciales"
+      ],
+      icon: <MapPin size={24} />,
+      color: "var(--neon-cyan)"
+    },
+    {
       title: "Proyecto Pulse - Full Stack Developer",
       company: "Proyecto Personal",
-      period: "2024 - Presente",
+      period: "2024",
       location: "Remoto",
       type: "proyecto",
-      description: "Desarrollo completo de una aplicación web utilizando el stack MERN.",
-      technologies: ["React", "Node.js", "MongoDB", "Express.js", "JWT", "Mongoose"],
+      description: "Desarrollo completo de una aplicación web full stack utilizando el stack MERN para gestión de proyectos y colaboración en equipo.",
+      technologies: ["React", "Node.js", "MongoDB", "Express.js", "JWT", "Mongoose", "REST APIs"],
       achievements: [
-        "Implementación de sistema de autenticación completo con JWT",
-        "Diseño y desarrollo de API RESTful escalable",
-        "Gestión de estado global con Context API",
-        "Optimización de queries a MongoDB para mejor rendimiento",
-        "Implementación de responsive design y UX moderna"
+        "Implementación de sistema de autenticación completo con JWT y refresh tokens",
+        "Diseño y desarrollo de API RESTful escalable con Express.js",
+        "Gestión de estado global con Context API y optimización de re-renders",
+        "Optimización de queries a MongoDB con índices y agregaciones",
+        "Implementación de responsive design mobile-first",
+        "Testing unitario y de integración con Jest"
       ],
       icon: <Cpu size={24} />,
       color: "var(--accent-green)"
     },
     {
-      title: "Desarrollador Frontend",
-      company: "Proyectos Freelance",
-      period: "2023 - 2024",
-      location: "Remoto",
-      type: "trabajo",
-      description: "Desarrollo de interfaces web modernas y responsivas para diversos clientes.",
-      technologies: ["React", "JavaScript", "CSS3", "HTML5", "Git"],
-      achievements: [
-        "Desarrollo de 5+ landing pages con alto rendimiento",
-        "Implementación de animaciones CSS y JavaScript",
-        "Optimización SEO y mejores prácticas de accesibilidad",
-        "Colaboración con diseñadores UX/UI",
-        "Integración con APIs de terceros"
-      ],
-      icon: <Globe size={24} />,
-      color: "var(--accent-blue)"
-    },
-    {
-      title: "Estudiante Autodidacta - Full Stack",
-      company: "Formación Continua",
-      period: "2022 - Presente",
-      location: "Online",
+      title: "Técnico Superior en Desarrollo de Aplicaciones Web",
+      company: "Formación Profesional",
+      period: "2023 - 2025",
+      location: "España",
       type: "educacion",
-      description: "Aprendizaje continuo de tecnologías web modernas y mejores prácticas de desarrollo.",
-      technologies: ["JavaScript", "React", "Node.js", "MongoDB", "Git", "REST APIs"],
+      description: "Ciclo Formativo de Grado Superior especializado en desarrollo de aplicaciones web, bases de datos y arquitectura de sistemas.",
+      technologies: ["Java", "JavaScript", "HTML5", "CSS3", "SQL", "PHP", "MySQL", "Git", "Linux"],
       achievements: [
-        "Completado múltiples cursos especializados en React y Node.js",
-        "Participación en comunidades de desarrolladores",
-        "Contribución a proyectos open source",
-        "Práctica constante con proyectos personales",
-        "Mantenimiento al día con últimas tecnologías del ecosistema JavaScript"
+        "Desarrollo de aplicaciones web con Java y frameworks MVC",
+        "Diseño y gestión de bases de datos relacionales (MySQL, PostgreSQL)",
+        "Programación orientada a objetos y patrones de diseño",
+        "Desarrollo de interfaces web responsivas y accesibles",
+        "Implementación de servicios web y APIs REST",
+        "Proyecto final: Sistema de gestión empresarial con Java EE"
       ],
       icon: <Database size={24} />,
       color: "var(--secondary-green)"

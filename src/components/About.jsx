@@ -15,25 +15,25 @@ const About = () => {
     {
       icon: <Code2 size={32} />,
       title: "Frontend Development",
-      description: "React, JavaScript ES6+, HTML5, CSS3, Responsive Design",
+      description: "React, JavaScript ES6+, TypeScript, HTML5, CSS3, Responsive Design, Material-UI",
       color: "var(--accent-green)"
     },
     {
       icon: <Server size={32} />,
       title: "Backend Development", 
-      description: "Node.js, Express.js, RESTful APIs, Authentication",
+      description: "Node.js, Java, Spring Boot, Express.js, RESTful APIs, Microservicios",
       color: "var(--accent-blue)"
     },
     {
       icon: <Database size={32} />,
-      title: "Database Management",
-      description: "MongoDB, Mongoose, Data Modeling, Query Optimization",
+      title: "Database & Cloud",
+      description: "PostgreSQL, MongoDB, MySQL, Redis, AWS, Docker, Data Modeling",
       color: "var(--secondary-green)"
     },
     {
       icon: <Microscope size={32} />,
-      title: "Problem Solving",
-      description: "Algoritmos, Estructuras de datos, Debugging, Testing",
+      title: "Sistemas GPS & IoT",
+      description: "Traccar, Geolocalización, WebSockets, Telemetría, Optimización de tracking",
       color: "var(--primary-blue)"
     }
   ]
@@ -94,20 +94,22 @@ const About = () => {
 
             <motion.div className="about-text" variants={itemVariants}>
               <p>
-                Soy un desarrollador full stack con experiencia en tecnologías modernas 
-                como <strong>React, Node.js y MongoDB</strong>. Mi pasión por la programación 
-                comenzó con la curiosidad de entender cómo funcionan las aplicaciones web, 
-                y desde entonces he estado en constante aprendizaje.
+                Soy <strong>Joaquín Piqueras Delicado</strong>, desarrollador full stack con sólida experiencia 
+                en tecnologías modernas como <strong>React, Node.js, Java, Spring Boot, PostgreSQL y MongoDB</strong>. 
+                Mi trayectoria profesional me ha permitido trabajar en proyectos diversos, desde aplicaciones 
+                web empresariales hasta soluciones IoT especializadas.
               </p>
               <p>
-                Mi proyecto más reciente, <strong>Pulse</strong>, me ha permitido profundizar 
-                en el ecosistema MERN (MongoDB, Express, React, Node.js), desarrollando 
-                desde la arquitectura del backend hasta interfaces de usuario intuitivas.
+                Actualmente trabajo en <strong>NGPRO</strong>, donde lidero el desarrollo y optimización de 
+                sistemas de tracking GPS basados en <strong>Traccar (open-source)</strong>. Mi trabajo se centra 
+                en la adaptación y mejora del sistema para el posicionamiento en tiempo real de vehículos, 
+                conductores y aperos agrícolas, implementando soluciones escalables con Spring Boot, 
+                PostgreSQL y tecnologías de geolocalización avanzadas.
               </p>
               <p>
-                Me caracterizo por mi atención al detalle, la capacidad de resolver problemas 
-                complejos y la pasión por escribir código limpio y mantenible. Siempre busco 
-                las mejores prácticas y estoy abierto a aprender nuevas tecnologías.
+                Me apasiona la arquitectura de software limpia, las buenas prácticas de desarrollo y 
+                la optimización de rendimiento. Disfruto resolviendo problemas complejos y creando 
+                soluciones tecnológicas que generan valor real para los usuarios.
               </p>
             </motion.div>
 

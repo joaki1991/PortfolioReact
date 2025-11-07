@@ -67,9 +67,9 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p className="hero-description" variants={itemVariants}>
-          Especializado en <strong>React, Node.js y MongoDB</strong>. 
-          Apasionado por crear aplicaciones web innovadoras con un enfoque 
-          en la experiencia del usuario y código limpio.
+          Especializado en <strong>React, Node.js, Java, Spring Boot, PostgreSQL y MongoDB</strong>. 
+          Actualmente en NGPRO, desarrollando soluciones de tracking GPS con <strong>Traccar</strong>, 
+          optimizando el posicionamiento de vehículos, conductores y aperos mediante tecnologías open-source.
         </motion.p>
 
         <motion.div className="hero-cta" variants={itemVariants}>
@@ -93,7 +93,7 @@ const Hero = () => {
 
         <motion.div className="hero-social" variants={itemVariants}>
           <motion.a 
-            href="https://github.com/joaquin" 
+            href="https://github.com/joaki1991" 
             target="_blank" 
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2, color: "var(--accent-green)" }}
@@ -101,7 +101,7 @@ const Hero = () => {
             <Github size={24} />
           </motion.a>
           <motion.a 
-            href="https://linkedin.com/in/joaquin" 
+            href="https://www.linkedin.com/in/joaquin-piqueras-delicado-97146b9a/" 
             target="_blank" 
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2, color: "var(--accent-blue)" }}
@@ -109,7 +109,7 @@ const Hero = () => {
             <Linkedin size={24} />
           </motion.a>
           <motion.a 
-            href="mailto:joaquin@email.com"
+            href="mailto:joakanpde@gmail.com"
             whileHover={{ scale: 1.2, color: "var(--accent-green)" }}
           >
             <Mail size={24} />

@@ -23,47 +23,49 @@ const Projects = () => {
         "Sistema de seguimiento de progreso",
         "API RESTful escalable"
       ],
-      github: "https://github.com/joaquin/pulse",
-      demo: "https://pulse-demo.com",
+      github: "https://github.com/joaki1991",
+      demo: "#",
       status: "En desarrollo",
       icon: <Heart size={24} />,
       color: "var(--accent-green)"
     },
     {
-      title: "Portfolio Biológico",
-      description: "Portfolio personal con temática de biología, desarrollado en React con animaciones fluidas y diseño responsivo. Incluye efectos de scroll y visualizaciones orgánicas.",
+      title: "Portfolio React 3D",
+      description: "Portfolio personal interactivo con temática de biología y animaciones 3D. Incluye renderizado 3D de ADN con Three.js, animaciones con Framer Motion y diseño responsivo con colores neón.",
       image: "/api/placeholder/600/400",
-      technologies: ["React", "Framer Motion", "CSS3", "Vite", "Lucide Icons"],
+      technologies: ["React", "Three.js", "Framer Motion", "Vite", "CSS3", "@react-three/fiber", "@react-three/drei"],
       features: [
-        "Animaciones de scroll suaves",
-        "Tema biológico inmersivo",
-        "Diseño completamente responsivo",
-        "Optimización de rendimiento",
-        "Efectos visuales orgánicos"
+        "Renderizado 3D de ADN con Three.js en tiempo real",
+        "Animaciones fluidas con scroll sincronizado",
+        "Diseño adaptativo: sidebar vertical (desktop) / horizontal (móvil)",
+        "Optimización de rendimiento con requestAnimationFrame",
+        "Tema neón con efectos visuales inmersivos",
+        "Rotación 3D interactiva basada en scroll"
       ],
-      github: "https://github.com/joaquin/portfolio-react",
-      demo: "https://joaquin-portfolio.com",
+      github: "https://github.com/joaki1991/PortfolioReact",
+      demo: "#",
       status: "Completado",
       icon: <Brain size={24} />,
-      color: "var(--accent-blue)"
+      color: "var(--neon-cyan)"
     },
     {
-      title: "Landing Page Moderna",
-      description: "Serie de landing pages modernas y optimizadas para clientes freelance. Enfoque en conversión, SEO y experiencia de usuario excepcional.",
+      title: "Sistema GPS Tracking - Traccar",
+      description: "Mejoras y adaptaciones al sistema open-source Traccar para tracking en tiempo real de vehículos agrícolas. Incluye optimizaciones de rendimiento y funcionalidades personalizadas.",
       image: "/api/placeholder/600/400",
-      technologies: ["JavaScript", "CSS3", "HTML5", "SASS", "Webpack"],
+      technologies: ["Java", "Spring Boot", "PostgreSQL", "React", "WebSockets", "Traccar", "Docker", "GPS"],
       features: [
-        "Optimización SEO completa",
-        "Diseño mobile-first",
-        "Formularios de contacto funcionales",
-        "Integración con analytics",
-        "Carga rápida optimizada"
+        "Tracking en tiempo real de múltiples dispositivos GPS",
+        "Gestión de flotas de vehículos y conductores",
+        "Telemetría y reportes de posicionamiento",
+        "Arquitectura escalable con Spring Boot",
+        "Integración con hardware GPS y sensores IoT",
+        "Dashboard web con visualización geoespacial"
       ],
-      github: "https://github.com/joaquin/landing-pages",
-      demo: "https://modern-landing.com",
-      status: "Completado",
-      icon: <Lightbulb size={24} />,
-      color: "var(--secondary-green)"
+      github: "#",
+      demo: "#",
+      status: "En desarrollo",
+      icon: <Zap size={24} />,
+      color: "var(--neon-magenta)"
     }
   ]
 

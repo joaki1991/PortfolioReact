@@ -35,21 +35,21 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       title: "Email",
-      content: "joaquin@email.com",
-      link: "mailto:joaquin@email.com",
+      content: "joakanpde@gmail.com",
+      link: "mailto:joakanpde@gmail.com",
       color: "var(--accent-green)"
     },
     {
       icon: <Phone size={24} />,
       title: "Teléfono",
-      content: "+34 XXX XXX XXX",
-      link: "tel:+34XXXXXXXXX",
+      content: "+34 627 812 107",
+      link: "tel:+34627812107",
       color: "var(--accent-blue)"
     },
     {
       icon: <MapPin size={24} />,
       title: "Ubicación",
-      content: "España",
+      content: "Almansa, Albacete, España",
       link: null,
       color: "var(--secondary-green)"
     }

@@ -35,6 +35,17 @@ const Contact = () => {
     setSubmitStatus(null)
 
     try {
+      // Verificar que el access key esté configurado
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+      
+      if (!accessKey) {
+        console.error('VITE_WEB3FORMS_ACCESS_KEY no está configurado')
+        setSubmitStatus('error')
+        setIsSubmitting(false)
+        setTimeout(() => setSubmitStatus(null), 5000)
+        return
+      }
+
       // Web3Forms - Access Key desde variable de entorno
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -43,7 +54,7 @@ const Contact = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+          access_key: accessKey,
           subject: `Nuevo mensaje de ${formData.name} - Portfolio`,
           from_name: formData.name,
           email: formData.email,
@@ -57,6 +68,7 @@ const Contact = () => {
         setFormData({ name: '', email: '', message: '' })
         setSubmitStatus('success')
       } else {
+        console.error('Error de Web3Forms:', result)
         setSubmitStatus('error')
       }
     } catch (error) {

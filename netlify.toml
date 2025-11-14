@@ -1,0 +1,19 @@
+# Netlify Configuration
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Build command - Vite build
+  command = "npm run build"
+  # Directory with the deployed files
+  publish = "dist"
+
+# Environment variables needed for the build
+# Configure these in Netlify UI: Site settings -> Environment variables
+# Required variables:
+# - VITE_WEB3FORMS_ACCESS_KEY: Your Web3Forms access key for the contact form
+
+# Redirects and rewrites for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

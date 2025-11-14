@@ -58,15 +58,40 @@ Un portfolio personal desarrollado en React con una temática única inspirada e
    npm install
    ```
 
-2. **Ejecutar en desarrollo**
+2. **Configurar variables de entorno**
+   
+   Copia el archivo `.env.example` a `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Luego edita `.env` y añade tu Access Key de Web3Forms:
+   ```env
+   VITE_WEB3FORMS_ACCESS_KEY=tu-access-key-aqui
+   ```
+
+3. **Ejecutar en desarrollo**
    ```bash
    npm run dev
    ```
 
-3. **Build para producción**
+4. **Build para producción**
    ```bash
    npm run build
    ```
+
+## 🚀 Despliegue en Netlify
+
+Para desplegar este portfolio en Netlify y que el formulario de contacto funcione correctamente, sigue la guía detallada en [NETLIFY_DEPLOYMENT_GUIDE.md](./NETLIFY_DEPLOYMENT_GUIDE.md).
+
+**Resumen rápido:**
+
+1. Configura la variable de entorno `VITE_WEB3FORMS_ACCESS_KEY` en Netlify
+2. El archivo `netlify.toml` ya está configurado con los ajustes necesarios
+3. Trigger un nuevo deploy después de configurar la variable
+4. ¡El formulario de contacto funcionará automáticamente!
+
+Ver la [guía completa](./NETLIFY_DEPLOYMENT_GUIDE.md) para instrucciones paso a paso.
 
 ## 🎨 Paleta de Colores
 

@@ -12,20 +12,21 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Pulse - Social Health Platform",
-      description: "Plataforma completa de salud social desarrollada con MERN stack. Incluye sistema de autenticación, gestión de perfiles, seguimiento de actividades y comunicación en tiempo real.",
+      title: "Pulse - Sistema de Encuestas",
+      description: "Aplicación completa de encuestas con soporte para usuarios registrados y anónimos (por IP). Permite crear encuestas públicas o privadas, votar y ver resultados en tiempo real.",
       image: "/api/placeholder/600/400",
-      technologies: ["React", "Node.js", "MongoDB", "Express.js", "Socket.io", "JWT", "Mongoose"],
+      technologies: ["React", "Node.js", "MongoDB", "Express.js", "JWT", "Cloudinary", "bcryptjs", "Vite"],
       features: [
-        "Autenticación segura con JWT",
-        "Dashboard interactivo de salud",
-        "Chat en tiempo real",
-        "Sistema de seguimiento de progreso",
-        "API RESTful escalable"
+        "Autenticación JWT y sistema de usuarios anónimos",
+        "CRUD completo de encuestas públicas y privadas",
+        "Votación en tiempo real con control de IP",
+        "Subida de imágenes con Cloudinary",
+        "Resultados dinámicos y visualización de datos",
+        "Interfaz moderna y completamente responsiva"
       ],
-      github: "https://github.com/joaki1991",
-      demo: "#",
-      status: "En desarrollo",
+      github: "https://github.com/joaki1991/Pulse",
+      demo: "https://pulsesurveys.netlify.app/",
+      status: "Completado",
       icon: <Heart size={24} />,
       color: "var(--accent-green)"
     },
@@ -50,7 +51,7 @@ const Projects = () => {
     },
     {
       title: "Sistema GPS Tracking - Traccar",
-      description: "Mejoras y adaptaciones al sistema open-source Traccar para tracking en tiempo real de vehículos agrícolas. Incluye optimizaciones de rendimiento y funcionalidades personalizadas.",
+      description: "Mejoras y adaptaciones al sistema open-source Traccar para tracking en tiempo real de vehículos agrícolas. Sistema desarrollado profesionalmente con optimizaciones de rendimiento y funcionalidades personalizadas. Incluye web de demo desarrollada por mí para visualizar las capacidades del sistema.",
       image: "/api/placeholder/600/400",
       technologies: ["Java", "Spring Boot", "PostgreSQL", "React", "WebSockets", "Traccar", "Docker", "GPS"],
       features: [
@@ -61,11 +62,30 @@ const Projects = () => {
         "Integración con hardware GPS y sensores IoT",
         "Dashboard web con visualización geoespacial"
       ],
-      github: "#",
-      demo: "#",
+      github: null,
+      demo: "https://trackermanual.netlify.app/",
       status: "En desarrollo",
       icon: <Zap size={24} />,
       color: "var(--neon-magenta)"
+    },
+    {
+      title: "EducaCenter",
+      description: "Sistema completo de gestión educativa con panel de administración. Incluye gestión de usuarios, roles y permisos, diseñado con Material-UI y arquitectura moderna de componentes React. Backend desarrollado en PHP. Nota: La base de datos ha sido restablecida recientemente y no hay usuarios de prueba disponibles.",
+      image: "/api/placeholder/600/400",
+      technologies: ["React 19", "Material-UI", "Vite", "Axios", "React Router", "Framer Motion", "PHP", "MySQL"],
+      features: [
+        "Panel de administración completo con login seguro",
+        "Gestión de usuarios con roles y permisos",
+        "Interfaz moderna con Material-UI (MUI)",
+        "Backend completo desarrollado en PHP",
+        "Rutas protegidas con React Router",
+        "Sistema de autenticación robusto con MySQL"
+      ],
+      github: "https://github.com/joaki1991/EducaCenter",
+      demo: "https://educacenter.netlify.app/login",
+      status: "Completado",
+      icon: <Lightbulb size={24} />,
+      color: "var(--secondary-green)"
     }
   ]
 
@@ -149,28 +169,32 @@ const Projects = () => {
                   </div>
 
                   <div className="project-links">
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-link github"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Github size={20} />
-                      Código
-                    </motion.a>
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-link demo"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <ExternalLink size={20} />
-                      Demo
-                    </motion.a>
+                    {project.github && (
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link github"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Github size={20} />
+                        Código
+                      </motion.a>
+                    )}
+                    {project.demo && project.demo !== '#' && (
+                      <motion.a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link demo"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <ExternalLink size={20} />
+                        {project.github === null ? 'Ver Demo' : 'Demo'}
+                      </motion.a>
+                    )}
                   </div>
                 </div>
               </motion.div>

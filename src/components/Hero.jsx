@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
 import './Hero.css'
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -28,7 +38,7 @@ const Hero = () => {
     <section id="hero" className="hero nucleotide-section adenine">
       <div className="hero-background">
         <div className="bio-cells">
-          {[...Array(15)].map((_, i) => (
+          {[...Array(isMobile ? 5 : 8)].map((_, i) => (
             <motion.div
               key={i}
               className="cell"
@@ -37,9 +47,10 @@ const Hero = () => {
                 opacity: [0.3, 0.8, 0.3],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: isMobile ? 5 + Math.random() * 2 : 4 + Math.random() * 2, // Más lento en móvil
                 repeat: Infinity,
                 delay: Math.random() * 2,
+                ease: "linear"
               }}
               style={{
                 left: `${Math.random() * 100}%`,
@@ -108,12 +119,21 @@ const Hero = () => {
           >
             <Linkedin size={24} />
           </motion.a>
-          <motion.a 
-            href="mailto:joakanpde@gmail.com"
+          <motion.div
+            onClick={() => {
+              window.location.href = "mailto:joakanpde@gmail.com";
+              // Fallback: copiar al portapapeles después de un pequeño delay
+              setTimeout(() => {
+                navigator.clipboard.writeText("joakanpde@gmail.com").then(() => {
+                  console.log("Email copiado al portapapeles como respaldo");
+                });
+              }, 500);
+            }}
+            style={{ cursor: 'pointer' }}
             whileHover={{ scale: 1.2, color: "var(--accent-green)" }}
           >
             <Mail size={24} />
-          </motion.a>
+          </motion.div>
         </motion.div>
       </motion.div>
 

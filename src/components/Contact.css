@@ -249,6 +249,35 @@
     border-color: white;
 }
 
+.submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submit-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.submit-message.success {
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+.submit-message.error {
+    background: rgba(255, 0, 128, 0.1);
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    box-shadow: 0 0 20px rgba(255, 0, 128, 0.2);
+}
+
 .submit-button:active {
     transform: translateY(0);
 }
@@ -265,9 +294,26 @@
     .contact {
         padding: 6rem 1.5rem;
         padding-bottom: 8rem;
-        /* Espacio para DNA en móvil */
         margin-left: 0;
         width: 100%;
+    }
+
+    .contact-background {
+        /* Reducir blur en móvil */
+        backdrop-filter: blur(5px);
+    }
+
+    .neuron {
+        /* Reducir tamaño en móvil */
+        width: 6px;
+        height: 6px;
+        filter: blur(0.5px);
+    }
+
+    .neuron::before {
+        /* Reducir conexiones en móvil */
+        width: 25px;
+        opacity: 0.2;
     }
 
     .contact-form-container {

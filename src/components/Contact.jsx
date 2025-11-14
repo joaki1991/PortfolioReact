@@ -1,10 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle } from 'lucide-react'
 import './Contact.css'
 
 const Contact = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true
@@ -16,12 +26,46 @@ const Contact = () => {
     message: ''
   })
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Aquí integrarías con tu servicio de email preferido
-    console.log('Form submitted:', formData)
-    alert('¡Mensaje enviado! Te contactaré pronto.')
-    setFormData({ name: '', email: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      // Web3Forms - Access Key desde variable de entorno
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+          subject: `Nuevo mensaje de ${formData.name} - Portfolio`,
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setFormData({ name: '', email: '', message: '' })
+        setSubmitStatus('success')
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+      setTimeout(() => setSubmitStatus(null), 5000)
+    }
   }
 
   const handleChange = (e) => {
@@ -59,19 +103,19 @@ const Contact = () => {
     {
       icon: <Github size={24} />,
       name: "GitHub",
-      url: "https://github.com/joaquin",
+      url: "https://github.com/joaki1991",
       color: "var(--text-primary)"
     },
     {
       icon: <Linkedin size={24} />,
       name: "LinkedIn",
-      url: "https://linkedin.com/in/joaquin",
+      url: "https://www.linkedin.com/in/joaquin-piqueras-delicado-97146b9a/",
       color: "#0077B5"
     },
     {
       icon: <MessageCircle size={24} />,
       name: "WhatsApp",
-      url: "https://wa.me/34XXXXXXXXX",
+      url: "https://wa.me/34627812107",
       color: "#25D366"
     }
   ]
@@ -100,7 +144,7 @@ const Contact = () => {
     <section id="contact" className="contact nucleotide-section adenine">
       <div className="contact-background">
         <div className="neural-network">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(isMobile ? 6 : 10)].map((_, i) => (
             <motion.div
               key={i}
               className="neuron"
@@ -113,9 +157,10 @@ const Contact = () => {
                 opacity: [0.3, 0.8, 0.3],
               }}
               transition={{
-                duration: 2 + Math.random() * 2,
+                duration: isMobile ? 4 + Math.random() * 2 : 3 + Math.random() * 2, // Más lento en móvil
                 repeat: Infinity,
                 delay: Math.random() * 2,
+                ease: "linear" // Linear es más eficiente
               }}
             />
           ))}
@@ -153,7 +198,23 @@ const Contact = () => {
                     whileHover={{ scale: 1.02, x: 5 }}
                   >
                     {info.link ? (
-                      <a href={info.link} className="contact-link">
+                      <div 
+                        className="contact-link"
+                        onClick={() => {
+                          if (info.link.startsWith('mailto:')) {
+                            window.location.href = info.link;
+                            // Fallback: copiar email al portapapeles
+                            setTimeout(() => {
+                              navigator.clipboard.writeText(info.content).then(() => {
+                                console.log("Email copiado al portapapeles como respaldo");
+                              });
+                            }, 500);
+                          } else {
+                            window.open(info.link, '_blank');
+                          }
+                        }}
+                        style={{ cursor: 'pointer' }}
+                      >
                         <div className="contact-icon" style={{ color: info.color }}>
                           {info.icon}
                         </div>
@@ -161,7 +222,7 @@ const Contact = () => {
                           <span className="contact-title">{info.title}</span>
                           <span className="contact-content">{info.content}</span>
                         </div>
-                      </a>
+                      </div>
                     ) : (
                       <div className="contact-link">
                         <div className="contact-icon" style={{ color: info.color }}>
@@ -246,10 +307,31 @@ const Contact = () => {
                   className="submit-button"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
                 >
                   <Send size={20} />
-                  Enviar mensaje
+                  {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                 </motion.button>
+
+                {submitStatus === 'success' && (
+                  <motion.div 
+                    className="submit-message success"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    ✓ ¡Mensaje enviado con éxito! Te contactaré pronto.
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div 
+                    className="submit-message error"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    ✗ Hubo un error al enviar el mensaje. Por favor, contáctame directamente a joakanpde@gmail.com
+                  </motion.div>
+                )}
               </form>
             </motion.div>
           </div>

@@ -10,14 +10,24 @@ const DNAAnimation = () => {
       setIsMobile(window.innerWidth <= 768)
     }
     
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    // Debounce del resize para mejor rendimiento
+    let timeoutId
+    const debouncedResize = () => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(handleResize, 150)
+    }
+    
+    window.addEventListener('resize', debouncedResize)
+    return () => {
+      window.removeEventListener('resize', debouncedResize)
+      clearTimeout(timeoutId)
+    }
   }, [])
 
-  // Configuración de la hélice
-  const segments = isMobile ? 40 : 30 // Más segmentos en móvil para cubrir más ancho
-  const radius = 40 // Radio de la hélice
-  const helixLength = isMobile ? 100 : 80 // Longitud en porcentaje
+  // Configuración de la hélice - Reducido para mejor rendimiento
+  const segments = isMobile ? 15 : 20 // Mucho menos en móvil
+  const radius = 40
+  const helixLength = isMobile ? 100 : 80
   
   return (
     <div className="dna-container">
@@ -58,10 +68,10 @@ const DNAAnimation = () => {
                   opacity: [0.6, 1, 0.6],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 3, // Más lento = menos cálculos
                   repeat: Infinity,
-                  delay: i * 0.05,
-                  ease: "easeInOut"
+                  delay: i * 0.08, // Menos frecuente
+                  ease: "linear" // Linear es más eficiente que easeInOut
                 }}
               />
               
@@ -77,10 +87,10 @@ const DNAAnimation = () => {
                   opacity: [0.6, 1, 0.6],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 3,
                   repeat: Infinity,
-                  delay: i * 0.05,
-                  ease: "easeInOut"
+                  delay: i * 0.08,
+                  ease: "linear"
                 }}
               />
               
@@ -100,10 +110,10 @@ const DNAAnimation = () => {
                     opacity: [0.3, 0.8, 0.3],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
-                    delay: i * 0.05,
-                    ease: "easeInOut"
+                    delay: i * 0.08,
+                    ease: "linear"
                   }}
                 />
               )}
@@ -112,19 +122,8 @@ const DNAAnimation = () => {
         })}
       </div>
       
-      {/* Animación de rotación de la hélice completa */}
-      <motion.div 
-        className="dna-rotation-effect"
-        animate={{
-          rotateY: isMobile ? [0, 0] : [0, 360],
-          rotateX: isMobile ? [0, 360] : [0, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
+      {/* Animación de rotación de la hélice completa - Desactivada para rendimiento */}
+      {/* La rotación 3D consume muchos recursos */}
     </div>
   )
 }

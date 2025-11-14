@@ -253,6 +253,14 @@
 
     .skill-card {
         padding: 1.5rem;
+        /* Reducir efectos en móvil */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-card:hover {
+        /* Simplificar hover en móvil */
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     .skill-title {
